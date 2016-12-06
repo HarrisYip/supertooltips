@@ -44,7 +44,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Tool
     {
         ToolTip toolTip = new ToolTip()
                 .withText("Tap me!")
-                .withColor(getResources().getColor(R.color.holo_purple))
+                .withColor(getResources().getColor(R.color.holo_red))
                 .withAnimationType(ToolTip.AnimationType.FROM_MASTER_VIEW, 1000)
                 .withBorderWidth(2)
                 .withRadius(20)

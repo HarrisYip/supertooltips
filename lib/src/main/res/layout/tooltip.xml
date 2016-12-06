@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:clipChildren="false">
@@ -9,9 +8,9 @@
     <View
         android:id="@+id/tooltip_shadow"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_below="@+id/tooltip_contentholder"
-        android:background="@drawable/shadow"/>
+        android:background="@drawable/shadow" />
 
     <com.nhaarman.supertooltips.RoundedBackgroundView
         android:id="@+id/tooltip_contentholder"
@@ -24,16 +23,16 @@
         <TextView
             android:id="@+id/tooltip_contenttv"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
     </com.nhaarman.supertooltips.RoundedBackgroundView>
 
     <com.nhaarman.supertooltips.UpTriangleShapeView
         android:id="@+id/tooltip_pointer_up"
-        android:layout_width="20dp"
+        android:layout_width="20dp"T
         android:layout_height="10dp"
         android:layout_marginBottom="-1dp"
-        android:src="@drawable/tooltip_arrow_up"/>
+        android:src="@drawable/tooltip_arrow_up" />
 
     <com.nhaarman.supertooltips.DownTriangleShapeView
         android:id="@+id/tooltip_pointer_down"
@@ -41,6 +40,6 @@
         android:layout_height="10dp"
         android:layout_below="@id/tooltip_contentholder"
         android:layout_marginTop="-1dp"
-        android:src="@drawable/tooltip_arrow_down"/>
+        android:src="@drawable/tooltip_arrow_down" />
 
 </RelativeLayout>
