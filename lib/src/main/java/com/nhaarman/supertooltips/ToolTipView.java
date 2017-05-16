@@ -103,7 +103,7 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
         setLayoutParams(layoutParams);
 
         if (mToolTip != null) {
-            applyToolTipPosition();
+            applyToolTipPosition(true);
         }
         return true;
     }
@@ -184,7 +184,7 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
         mContentHolder.setPadding(leftPadding, topPadding, rightPadding, bottomPadding);
 
         if (mDimensionsKnown) {
-            applyToolTipPosition();
+            applyToolTipPosition(true);
         }
 
         if (!mToolTip.shouldShowShadow()) {
@@ -215,7 +215,7 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
         mBottomPointerView.setShowBorder(true);
     }
 
-    private void applyToolTipPosition()
+    public void applyToolTipPosition(boolean animate)
     {
         final int[] masterViewScreenPosition = new int[2];
         mView.getLocationOnScreen(masterViewScreenPosition);
@@ -257,8 +257,7 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
             toolTipViewY = toolTipViewAboveY;
         }
 
-        if (mToolTip.getAnimationType() == ToolTip.AnimationType.NONE) {
-
+        if (mToolTip.getAnimationType() == ToolTip.AnimationType.NONE || !animate) {
             setTranslationY(toolTipViewY);
             setTranslationX(toolTipViewX);
         }

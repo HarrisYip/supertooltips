@@ -29,7 +29,7 @@
 
     <com.nhaarman.supertooltips.UpTriangleShapeView
         android:id="@+id/tooltip_pointer_up"
-        android:layout_width="20dp"T
+        android:layout_width="20dp"
         android:layout_height="10dp"
         android:layout_marginBottom="-1dp"
         android:src="@drawable/tooltip_arrow_up" />
