@@ -233,8 +233,8 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
         mRelativeMasterViewY = masterViewScreenPosition[1] - parentViewScreenPosition[1];
         final int relativeMasterViewCenterX = mRelativeMasterViewX + masterViewWidth / 2;
 
-        int toolTipViewAboveY = mRelativeMasterViewY - (getHeight() / 2) + mToolTip.getYOffset();
-        int toolTipViewBelowY = Math.max(0, mRelativeMasterViewY + masterViewHeight / 2) + mToolTip.getYOffset();
+        int toolTipViewAboveY = mRelativeMasterViewY - (getHeight() / 2);
+        int toolTipViewBelowY = Math.max(0, mRelativeMasterViewY + masterViewHeight / 2);
 
         int toolTipViewX = Math.max(0, relativeMasterViewCenterX - mWidth / 2) + mToolTip.getXOffSet();
         if (toolTipViewX + mWidth > viewDisplayFrame.right) {
@@ -244,7 +244,7 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
         setX(toolTipViewX);
         setPointerCenterX(relativeMasterViewCenterX);
 
-        final boolean showBelow = toolTipViewAboveY < 0;
+        final boolean showBelow = (toolTipViewAboveY - mToolTip.getYOffset())  <  0;
 
         mTopPointerView.setVisibility(showBelow ? VISIBLE : GONE);
         mBottomPointerView.setVisibility(showBelow ? GONE : VISIBLE);
@@ -256,6 +256,8 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
         else {
             toolTipViewY = toolTipViewAboveY;
         }
+
+        toolTipViewY += mToolTip.getYOffset();
 
         if (mToolTip.getAnimationType() == ToolTip.AnimationType.NONE || !animate) {
             setTranslationY(toolTipViewY);
