@@ -156,15 +156,18 @@ public class MainActivity extends Activity implements View.OnClickListener, Tool
         if (id == R.id.activity_main_orangetv) {
             if (mOrangeToolTipView == null) {
                 addOrangeToolTipView();
-            } else {
+            }
+            else {
                 mOrangeToolTipView.remove();
                 mOrangeToolTipView = null;
             }
 
-        } else {
+        }
+        else {
             if (mPurpleToolTipView == null) {
                 addPurpleTooltipView();
-            } else {
+            }
+            else {
                 mPurpleToolTipView.remove();
                 mPurpleToolTipView = null;
             }
@@ -176,7 +179,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Tool
     {
         if (mOrangeToolTipView == toolTipView) {
             mOrangeToolTipView = null;
-        } else {
+        }
+        else {
             mPurpleToolTipView = null;
         }
     }

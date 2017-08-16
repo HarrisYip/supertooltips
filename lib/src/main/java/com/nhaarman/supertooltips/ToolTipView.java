@@ -115,7 +115,8 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
 
         if (mToolTip.getText() != null) {
             mToolTipTV.setText(mToolTip.getText());
-        } else if (mToolTip.getTextResId() != 0) {
+        }
+        else if (mToolTip.getTextResId() != 0) {
             mToolTipTV.setText(mToolTip.getTextResId());
         }
 
@@ -188,7 +189,8 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
 
         if (!mToolTip.shouldShowShadow()) {
             mShadowView.setVisibility(View.GONE);
-        } else {
+        }
+        else {
             getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
             {
                 @Override
@@ -247,9 +249,11 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
 
         if (mToolTip.shouldShowAbove()) {
             showBelow = false;
-        } else if (mToolTip.shouldShowBelow()) {
+        }
+        else if (mToolTip.shouldShowBelow()) {
             showBelow = true;
-        } else {
+        }
+        else {
             showBelow = (toolTipViewAboveY - mToolTip.getYOffset()) < 0;
         }
 
@@ -259,7 +263,8 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
         int toolTipViewY;
         if (showBelow) {
             toolTipViewY = toolTipViewBelowY;
-        } else {
+        }
+        else {
             toolTipViewY = toolTipViewAboveY;
         }
 
@@ -268,14 +273,16 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
         if (mToolTip.getAnimationType() == ToolTip.AnimationType.NONE || !animate) {
             setTranslationY(toolTipViewY);
             setTranslationX(toolTipViewX);
-        } else {
+        }
+        else {
             Collection<Animator> animators = new ArrayList<>(5);
 
             if (mToolTip.getAnimationType() == ToolTip.AnimationType.FROM_MASTER_VIEW) {
                 float i = mRelativeMasterViewY + (float) mView.getHeight() / 2 - (float) getHeight() / 2;
                 animators.add(ObjectAnimator.ofFloat(this, View.TRANSLATION_Y, i, (float) toolTipViewY));
                 animators.add(ObjectAnimator.ofFloat(this, View.TRANSLATION_X, mRelativeMasterViewX + mView.getWidth() / 2 - mWidth / 2, toolTipViewX));
-            } else if (mToolTip.getAnimationType() == ToolTip.AnimationType.FROM_TOP) {
+            }
+            else if (mToolTip.getAnimationType() == ToolTip.AnimationType.FROM_TOP) {
                 animators.add(ObjectAnimator.ofFloat(this, View.TRANSLATION_Y, 0, (float) toolTipViewY));
             }
 
@@ -347,12 +354,14 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
             if (getParent() != null) {
                 ((ViewManager) getParent()).removeView(this);
             }
-        } else {
+        }
+        else {
             Collection<Animator> animators = new ArrayList<>(5);
             if (mToolTip.getAnimationType() == ToolTip.AnimationType.FROM_MASTER_VIEW) {
                 animators.add(ObjectAnimator.ofInt(this, TRANSLATION_Y_COMPAT, (int) getY(), mRelativeMasterViewY + mView.getHeight() / 2 - getHeight() / 2));
                 animators.add(ObjectAnimator.ofInt(this, TRANSLATION_X_COMPAT, (int) getX(), mRelativeMasterViewX + mView.getWidth() / 2 - mWidth / 2));
-            } else {
+            }
+            else {
                 animators.add(ObjectAnimator.ofFloat(this, TRANSLATION_Y_COMPAT, getY(), 0));
             }
 
@@ -392,7 +401,8 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
         float result;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             result = super.getX();
-        } else {
+        }
+        else {
             result = getX();
         }
         return result;
@@ -407,7 +417,8 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
     {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             super.setX(x);
-        } else {
+        }
+        else {
             setX(x);
         }
     }
@@ -422,7 +433,8 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
         float result;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             result = super.getY();
-        } else {
+        }
+        else {
             result = getY();
         }
         return result;
@@ -437,7 +449,8 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
     {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             super.setY(y);
-        } else {
+        }
+        else {
             setY(y);
         }
     }
