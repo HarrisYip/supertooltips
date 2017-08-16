@@ -303,7 +303,7 @@ public class ToolTip
     }
 
     /**
-     * Set a boolean to request the ToolTip to be shown above the view
+     * Request the ToolTip to be shown above the view
      *
      * @return this ToolTip to build upon.
      */
@@ -315,7 +315,7 @@ public class ToolTip
     }
 
     /**
-     * Set a boolean to request the ToolTip to be shown below the view
+     * Request the ToolTip to be shown below the view
      *
      * @return this ToolTip to build upon.
      */
