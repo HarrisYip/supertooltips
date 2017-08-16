@@ -40,7 +40,8 @@ import java.util.Collection;
  * A ViewGroup to visualize ToolTips. Use
  * ToolTipRelativeLayout.showToolTipForView() to show ToolTips.
  */
-public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreDrawListener, View.OnClickListener {
+public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreDrawListener, View.OnClickListener
+{
 
     public static final String TRANSLATION_Y_COMPAT = "translationY";
     public static final String TRANSLATION_X_COMPAT = "translationX";
@@ -67,12 +68,14 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
 
     private OnToolTipViewClickedListener mListener;
 
-    public ToolTipView(final Context context) {
+    public ToolTipView(final Context context)
+    {
         super(context);
         init();
     }
 
-    private void init() {
+    private void init()
+    {
         setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         setOrientation(VERTICAL);
         LayoutInflater.from(getContext()).inflate(R.layout.tooltip, this, true);
@@ -88,7 +91,8 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
     }
 
     @Override
-    public boolean onPreDraw() {
+    public boolean onPreDraw()
+    {
         getViewTreeObserver().removeOnPreDrawListener(this);
         mDimensionsKnown = true;
 
@@ -104,7 +108,8 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
         return true;
     }
 
-    public void setToolTip(final ToolTip toolTip, final View view) {
+    public void setToolTip(final ToolTip toolTip, final View view)
+    {
         mToolTip = toolTip;
         mView = view;
 
@@ -184,9 +189,11 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
         if (!mToolTip.shouldShowShadow()) {
             mShadowView.setVisibility(View.GONE);
         } else {
-            getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+            {
                 @Override
-                public void onGlobalLayout() {
+                public void onGlobalLayout()
+                {
                     int shadowSize = mToolTip.getShadowSize() > 0 ? mToolTip.getShadowSize() : (int) (2 * getResources().getDisplayMetrics().density);
                     int height = mContentHolder.getHeight();
 
@@ -200,13 +207,15 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
         }
     }
 
-    private void setShowBorder() {
+    private void setShowBorder()
+    {
         mContentHolder.setShowBorder(true);
         mTopPointerView.setShowBorder(true);
         mBottomPointerView.setShowBorder(true);
     }
 
-    public void applyToolTipPosition(boolean animate) {
+    public void applyToolTipPosition(boolean animate)
+    {
         final int[] masterViewScreenPosition = new int[2];
         mView.getLocationOnScreen(masterViewScreenPosition);
 
@@ -289,36 +298,42 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
         }
     }
 
-    public void setPointerCenterX(final int pointerCenterX) {
+    public void setPointerCenterX(final int pointerCenterX)
+    {
         int pointerWidth = Math.max(mTopPointerView.getMeasuredWidth(), mBottomPointerView.getMeasuredWidth());
 
         mTopPointerView.setX(pointerCenterX - pointerWidth / 2 - (int) getX());
         mBottomPointerView.setX(pointerCenterX - pointerWidth / 2 - (int) getX());
     }
 
-    public void setOnToolTipViewClickedListener(final OnToolTipViewClickedListener listener) {
+    public void setOnToolTipViewClickedListener(final OnToolTipViewClickedListener listener)
+    {
         mListener = listener;
     }
 
-    public void setColor(final int color) {
+    public void setColor(final int color)
+    {
         mTopPointerView.setColor(color);
         mBottomPointerView.setColor(color);
         mContentHolder.setBackgroundColor(0x0000000000);
         mContentHolder.setColor(color);
     }
 
-    public void setBorderColor(final int color) {
+    public void setBorderColor(final int color)
+    {
         mTopPointerView.setBorderColor(color);
         mBottomPointerView.setBorderColor(color);
         mContentHolder.setBorderColor(color);
     }
 
-    private void setContentView(final View view) {
+    private void setContentView(final View view)
+    {
         mContentHolder.removeAllViews();
         mContentHolder.addView(view);
     }
 
-    public void remove() {
+    public void remove()
+    {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) getLayoutParams();
             setX(params.leftMargin);
@@ -358,7 +373,8 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
     }
 
     @Override
-    public void onClick(final View view) {
+    public void onClick(final View view)
+    {
         remove();
 
         if (mListener != null) {
@@ -371,7 +387,8 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
      */
     @SuppressLint("NewApi")
     @Override
-    public float getX() {
+    public float getX()
+    {
         float result;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             result = super.getX();
@@ -386,7 +403,8 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
      */
     @SuppressLint("NewApi")
     @Override
-    public void setX(final float x) {
+    public void setX(final float x)
+    {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             super.setX(x);
         } else {
@@ -399,7 +417,8 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
      */
     @SuppressLint("NewApi")
     @Override
-    public float getY() {
+    public float getY()
+    {
         float result;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             result = super.getY();
@@ -414,7 +433,8 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
      */
     @SuppressLint("NewApi")
     @Override
-    public void setY(final float y) {
+    public void setY(final float y)
+    {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             super.setY(y);
         } else {
@@ -422,37 +442,44 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
         }
     }
 
-    public void setBorderWidth(int borderWidth) {
+    public void setBorderWidth(int borderWidth)
+    {
         mContentHolder.setBorderWidth(borderWidth);
         mTopPointerView.setBorderWidth(borderWidth);
         mBottomPointerView.setBorderWidth(borderWidth);
     }
 
-    public void setBorderRadius(int borderRadius) {
+    public void setBorderRadius(int borderRadius)
+    {
         mContentHolder.setRadius(borderRadius);
     }
 
-    public interface OnToolTipViewClickedListener {
+    public interface OnToolTipViewClickedListener
+    {
         void onToolTipViewClicked(ToolTipView toolTipView);
     }
 
-    private class AppearanceAnimatorListener extends AnimatorListenerAdapter {
+    private class AppearanceAnimatorListener extends AnimatorListenerAdapter
+    {
 
         private final float mToolTipViewX;
         private final float mToolTipViewY;
 
-        AppearanceAnimatorListener(final float fToolTipViewX, final float fToolTipViewY) {
+        AppearanceAnimatorListener(final float fToolTipViewX, final float fToolTipViewY)
+        {
             mToolTipViewX = fToolTipViewX;
             mToolTipViewY = fToolTipViewY;
         }
 
         @Override
-        public void onAnimationStart(final Animator animation) {
+        public void onAnimationStart(final Animator animation)
+        {
         }
 
         @Override
         @SuppressLint("NewApi")
-        public void onAnimationEnd(final Animator animation) {
+        public void onAnimationEnd(final Animator animation)
+        {
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) getLayoutParams();
             params.leftMargin = (int) mToolTipViewX;
             params.topMargin = (int) mToolTipViewY;
@@ -462,33 +489,40 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
         }
 
         @Override
-        public void onAnimationCancel(final Animator animation) {
+        public void onAnimationCancel(final Animator animation)
+        {
         }
 
         @Override
-        public void onAnimationRepeat(final Animator animation) {
+        public void onAnimationRepeat(final Animator animation)
+        {
         }
     }
 
-    private class DisappearanceAnimatorListener extends AnimatorListenerAdapter {
+    private class DisappearanceAnimatorListener extends AnimatorListenerAdapter
+    {
 
         @Override
-        public void onAnimationStart(final Animator animation) {
+        public void onAnimationStart(final Animator animation)
+        {
         }
 
         @Override
-        public void onAnimationEnd(final Animator animation) {
+        public void onAnimationEnd(final Animator animation)
+        {
             if (getParent() != null) {
                 ((ViewManager) getParent()).removeView(ToolTipView.this);
             }
         }
 
         @Override
-        public void onAnimationCancel(final Animator animation) {
+        public void onAnimationCancel(final Animator animation)
+        {
         }
 
         @Override
-        public void onAnimationRepeat(final Animator animation) {
+        public void onAnimationRepeat(final Animator animation)
+        {
         }
     }
 }

@@ -18,8 +18,10 @@ package com.nhaarman.supertooltips;
 import android.graphics.Typeface;
 import android.view.View;
 
-public class ToolTip {
-    public enum AnimationType {
+public class ToolTip
+{
+    public enum AnimationType
+    {
         FROM_MASTER_VIEW,
         FROM_TOP,
         NONE;
@@ -52,7 +54,8 @@ public class ToolTip {
     /**
      * Creates a new ToolTip without any values.
      */
-    public ToolTip() {
+    public ToolTip()
+    {
         mText = null;
         mTypeface = null;
         mTextResId = 0;
@@ -69,7 +72,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip withText(final CharSequence text) {
+    public ToolTip withText(final CharSequence text)
+    {
         mText = text;
         mTextResId = 0;
         return this;
@@ -80,7 +84,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip withText(final int resId) {
+    public ToolTip withText(final int resId)
+    {
         mTextResId = resId;
         mText = null;
         return this;
@@ -91,7 +96,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip withText(final int resId, final Typeface tf) {
+    public ToolTip withText(final int resId, final Typeface tf)
+    {
         mTextResId = resId;
         mText = null;
         withTypeface(tf);
@@ -103,7 +109,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip withColor(final int color) {
+    public ToolTip withColor(final int color)
+    {
         mColor = color;
         return this;
     }
@@ -113,7 +120,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip withBorder() {
+    public ToolTip withBorder()
+    {
         mShowBorder = true;
         return this;
     }
@@ -123,7 +131,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip withBorderColor(int color) {
+    public ToolTip withBorderColor(int color)
+    {
         mBorderColor = color;
         return this;
     }
@@ -133,7 +142,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip withBorderWidth(int width) {
+    public ToolTip withBorderWidth(int width)
+    {
         mBorderWidth = width;
         return this;
     }
@@ -143,7 +153,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip withRadius(int radius) {
+    public ToolTip withRadius(int radius)
+    {
         mBorderRadius = radius;
         return this;
     }
@@ -153,7 +164,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip withTextColor(final int color) {
+    public ToolTip withTextColor(final int color)
+    {
         mTextColor = color;
         return this;
     }
@@ -163,7 +175,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip withContentView(final View view) {
+    public ToolTip withContentView(final View view)
+    {
         mContentView = view;
         return this;
     }
@@ -173,7 +186,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip withAnimationType(final AnimationType animationType) {
+    public ToolTip withAnimationType(final AnimationType animationType)
+    {
         mAnimationType = animationType;
         return this;
     }
@@ -183,7 +197,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip withAnimationType(AnimationType fromMasterView, long duration) {
+    public ToolTip withAnimationType(AnimationType fromMasterView, long duration)
+    {
         mAnimationDuration = duration;
         return withAnimationType(fromMasterView);
     }
@@ -193,7 +208,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip withShadow() {
+    public ToolTip withShadow()
+    {
         mShouldShowShadow = true;
         return this;
     }
@@ -203,7 +219,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip withoutShadow() {
+    public ToolTip withoutShadow()
+    {
         mShouldShowShadow = false;
         return this;
     }
@@ -213,7 +230,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip withShadowColor(int shadowColor) {
+    public ToolTip withShadowColor(int shadowColor)
+    {
         mShadowColor = shadowColor;
         return this;
     }
@@ -223,7 +241,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip withYOffset(int offset) {
+    public ToolTip withYOffset(int offset)
+    {
         mYOffset = offset;
         return this;
     }
@@ -233,7 +252,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip withHorizontalPadding(int padding) {
+    public ToolTip withHorizontalPadding(int padding)
+    {
         mHorizontalPadding = padding;
         return this;
     }
@@ -243,7 +263,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip withVerticalPadding(int padding) {
+    public ToolTip withVerticalPadding(int padding)
+    {
         mVerticalPadding = padding;
         return this;
     }
@@ -253,7 +274,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip withTipArcSize(int i) {
+    public ToolTip withTipArcSize(int i)
+    {
         mTipArcSize = i;
         return this;
     }
@@ -263,7 +285,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip withXOffset(int i) {
+    public ToolTip withXOffset(int i)
+    {
         mXOffSet = i;
         return this;
     }
@@ -273,7 +296,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip withShadowSize(int v) {
+    public ToolTip withShadowSize(int v)
+    {
         mShadowSize = v;
         return this;
     }
@@ -283,7 +307,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip requestShowAbove() {
+    public ToolTip requestShowAbove()
+    {
         mShowAbove = true;
         mShowBelow = false;
         return this;
@@ -294,7 +319,8 @@ public class ToolTip {
      *
      * @return this ToolTip to build upon.
      */
-    public ToolTip requestShowBelow() {
+    public ToolTip requestShowBelow()
+    {
         mShowAbove = false;
         mShowBelow = true;
         return this;
@@ -303,98 +329,121 @@ public class ToolTip {
     /**
      * @param typeface the typeface to set
      */
-    public void withTypeface(final Typeface typeface) {
+    public void withTypeface(final Typeface typeface)
+    {
         mTypeface = typeface;
     }
 
-    public CharSequence getText() {
+    public CharSequence getText()
+    {
         return mText;
     }
 
-    public int getTextResId() {
+    public int getTextResId()
+    {
         return mTextResId;
     }
 
-    public int getColor() {
+    public int getColor()
+    {
         return mColor;
     }
 
-    public int getBorderColor() {
+    public int getBorderColor()
+    {
         return mBorderColor;
     }
 
-    public int getBorderWidth() {
+    public int getBorderWidth()
+    {
         return mBorderWidth;
     }
 
-    public int getBorderRadius() {
+    public int getBorderRadius()
+    {
         return mBorderRadius;
     }
 
-    public long getAnimationDuration() {
+    public long getAnimationDuration()
+    {
         return mAnimationDuration;
     }
 
-    public int getTextColor() {
+    public int getTextColor()
+    {
         return mTextColor;
     }
 
-    public View getContentView() {
+    public View getContentView()
+    {
         return mContentView;
     }
 
-    public AnimationType getAnimationType() {
+    public AnimationType getAnimationType()
+    {
         return mAnimationType;
     }
 
-    public int getYOffset() {
+    public int getYOffset()
+    {
         return mYOffset;
     }
 
-    public int getXOffSet() {
+    public int getXOffSet()
+    {
         return mXOffSet;
     }
 
-    public int getHorizontalPadding() {
+    public int getHorizontalPadding()
+    {
         return mHorizontalPadding;
     }
 
-    public int getVerticalPadding() {
+    public int getVerticalPadding()
+    {
         return mVerticalPadding;
     }
 
-    public boolean shouldShowShadow() {
+    public boolean shouldShowShadow()
+    {
         return mShouldShowShadow;
     }
 
-    public int getShadowColor() {
+    public int getShadowColor()
+    {
         return mShadowColor;
     }
 
-    public boolean shouldShowBorder() {
+    public boolean shouldShowBorder()
+    {
         return mShowBorder;
     }
 
-    public int getTipArcSize() {
+    public int getTipArcSize()
+    {
         return mTipArcSize;
     }
 
-    public int getShadowSize() {
+    public int getShadowSize()
+    {
         return mShadowSize;
     }
 
-    public boolean shouldShowAbove() {
+    public boolean shouldShowAbove()
+    {
         return mShowAbove;
     }
 
-    public boolean shouldShowBelow() {
+    public boolean shouldShowBelow()
+    {
         return mShowBelow;
     }
 
     /**
      * @return the typeface
      */
-    public Typeface getTypeface() {
+    public Typeface getTypeface()
+    {
         return mTypeface;
     }
 }

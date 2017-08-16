@@ -12,14 +12,16 @@ import com.nhaarman.supertooltips.ToolTip;
 import com.nhaarman.supertooltips.ToolTipRelativeLayout;
 import com.nhaarman.supertooltips.ToolTipView;
 
-public class MainActivity extends Activity implements View.OnClickListener, ToolTipView.OnToolTipViewClickedListener {
+public class MainActivity extends Activity implements View.OnClickListener, ToolTipView.OnToolTipViewClickedListener
+{
 
     private ToolTipView mOrangeToolTipView;
     private ToolTipRelativeLayout mToolTipFrameLayout;
     private ToolTipView mPurpleToolTipView;
 
     @Override
-    protected void onCreate(final Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -28,9 +30,11 @@ public class MainActivity extends Activity implements View.OnClickListener, Tool
         findViewById(R.id.activity_main_orangetv).setOnClickListener(this);
         findViewById(R.id.activity_main_purpletv).setOnClickListener(this);
 
-        new Handler().postDelayed(new Runnable() {
+        new Handler().postDelayed(new Runnable()
+        {
             @Override
-            public void run() {
+            public void run()
+            {
                 addOrangeToolTipView();
                 addPurpleTooltipView();
             }
@@ -38,7 +42,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Tool
 
     }
 
-    private void addPurpleTooltipView() {
+    private void addPurpleTooltipView()
+    {
         ToolTip toolTip = new ToolTip()
                 .withText("Tap me!")
                 .withColor(getResources().getColor(R.color.holo_red))
@@ -52,28 +57,35 @@ public class MainActivity extends Activity implements View.OnClickListener, Tool
                 .withTipArcSize(20);
 
         mPurpleToolTipView = mToolTipFrameLayout.showToolTipForView(toolTip, findViewById(R.id.activity_main_purpletv));
-        mPurpleToolTipView.setOnToolTipViewClickedListener(new ToolTipView.OnToolTipViewClickedListener() {
+        mPurpleToolTipView.setOnToolTipViewClickedListener(new ToolTipView.OnToolTipViewClickedListener()
+        {
             @Override
-            public void onToolTipViewClicked(ToolTipView toolTipView) {
+            public void onToolTipViewClicked(ToolTipView toolTipView)
+            {
                 ObjectAnimator animator = ObjectAnimator.ofFloat(findViewById(R.id.activity_main_orangetv), View.TRANSLATION_X, 0, 100);
-                animator.addListener(new Animator.AnimatorListener() {
+                animator.addListener(new Animator.AnimatorListener()
+                {
                     @Override
-                    public void onAnimationStart(Animator animation) {
+                    public void onAnimationStart(Animator animation)
+                    {
 
                     }
 
                     @Override
-                    public void onAnimationEnd(Animator animation) {
+                    public void onAnimationEnd(Animator animation)
+                    {
                         mOrangeToolTipView.applyToolTipPosition(false);
                     }
 
                     @Override
-                    public void onAnimationCancel(Animator animation) {
+                    public void onAnimationCancel(Animator animation)
+                    {
 
                     }
 
                     @Override
-                    public void onAnimationRepeat(Animator animation) {
+                    public void onAnimationRepeat(Animator animation)
+                    {
 
                     }
                 });
@@ -82,7 +94,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Tool
         });
     }
 
-    private void addOrangeToolTipView() {
+    private void addOrangeToolTipView()
+    {
         float dipscaling = getResources().getDisplayMetrics().density;
         ToolTip toolTip = new ToolTip()
                 .withAnimationType(ToolTip.AnimationType.FROM_MASTER_VIEW, 200)
@@ -99,28 +112,35 @@ public class MainActivity extends Activity implements View.OnClickListener, Tool
                 .withShadowSize((int) (10 * dipscaling));
 
         mOrangeToolTipView = mToolTipFrameLayout.showToolTipForView(toolTip, findViewById(R.id.activity_main_orangetv));
-        mOrangeToolTipView.setOnToolTipViewClickedListener(new ToolTipView.OnToolTipViewClickedListener() {
+        mOrangeToolTipView.setOnToolTipViewClickedListener(new ToolTipView.OnToolTipViewClickedListener()
+        {
             @Override
-            public void onToolTipViewClicked(final ToolTipView toolTipView) {
+            public void onToolTipViewClicked(final ToolTipView toolTipView)
+            {
                 ObjectAnimator animator = ObjectAnimator.ofFloat(findViewById(R.id.activity_main_orangetv), View.TRANSLATION_X, 0, 10);
-                animator.addListener(new Animator.AnimatorListener() {
+                animator.addListener(new Animator.AnimatorListener()
+                {
                     @Override
-                    public void onAnimationStart(Animator animation) {
+                    public void onAnimationStart(Animator animation)
+                    {
 
                     }
 
                     @Override
-                    public void onAnimationEnd(Animator animation) {
+                    public void onAnimationEnd(Animator animation)
+                    {
                         toolTipView.applyToolTipPosition(true);
                     }
 
                     @Override
-                    public void onAnimationCancel(Animator animation) {
+                    public void onAnimationCancel(Animator animation)
+                    {
 
                     }
 
                     @Override
-                    public void onAnimationRepeat(Animator animation) {
+                    public void onAnimationRepeat(Animator animation)
+                    {
 
                     }
                 });
@@ -130,7 +150,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Tool
     }
 
     @Override
-    public void onClick(final View view) {
+    public void onClick(final View view)
+    {
         int id = view.getId();
         if (id == R.id.activity_main_orangetv) {
             if (mOrangeToolTipView == null) {
@@ -151,7 +172,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Tool
     }
 
     @Override
-    public void onToolTipViewClicked(final ToolTipView toolTipView) {
+    public void onToolTipViewClicked(final ToolTipView toolTipView)
+    {
         if (mOrangeToolTipView == toolTipView) {
             mOrangeToolTipView = null;
         } else {
