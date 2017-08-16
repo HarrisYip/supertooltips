@@ -191,7 +191,8 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
             mShadowView.setVisibility(View.GONE);
         }
         else {
-            getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+            {
                 @Override
                 public void onGlobalLayout()
                 {
@@ -244,7 +245,17 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
         setX(toolTipViewX);
         setPointerCenterX(relativeMasterViewCenterX);
 
-        final boolean showBelow = (toolTipViewAboveY - mToolTip.getYOffset())  <  0;
+        final boolean showBelow;
+
+        if (mToolTip.shouldShowAbove()) {
+            showBelow = false;
+        }
+        else if (mToolTip.shouldShowBelow()) {
+            showBelow = true;
+        }
+        else {
+            showBelow = (toolTipViewAboveY - mToolTip.getYOffset()) < 0;
+        }
 
         mTopPointerView.setVisibility(showBelow ? VISIBLE : GONE);
         mBottomPointerView.setVisibility(showBelow ? GONE : VISIBLE);

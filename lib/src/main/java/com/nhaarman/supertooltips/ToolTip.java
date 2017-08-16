@@ -20,7 +20,8 @@ import android.view.View;
 
 public class ToolTip
 {
-    public enum AnimationType {
+    public enum AnimationType
+    {
         FROM_MASTER_VIEW,
         FROM_TOP,
         NONE;
@@ -47,6 +48,8 @@ public class ToolTip
     private Typeface mTypeface;
     private int mXOffSet;
     private int mShadowSize;
+    private boolean mShowBelow;
+    private boolean mShowAbove;
 
     /**
      * Creates a new ToolTip without any values.
@@ -60,6 +63,8 @@ public class ToolTip
         mBorderColor = 0;
         mContentView = null;
         mAnimationType = AnimationType.FROM_MASTER_VIEW;
+        mShowAbove = false;
+        mShowBelow = false;
     }
 
     /**
@@ -298,6 +303,30 @@ public class ToolTip
     }
 
     /**
+     * Request the ToolTip to be shown above the view
+     *
+     * @return this ToolTip to build upon.
+     */
+    public ToolTip requestShowAbove()
+    {
+        mShowAbove = true;
+        mShowBelow = false;
+        return this;
+    }
+
+    /**
+     * Request the ToolTip to be shown below the view
+     *
+     * @return this ToolTip to build upon.
+     */
+    public ToolTip requestShowBelow()
+    {
+        mShowAbove = false;
+        mShowBelow = true;
+        return this;
+    }
+
+    /**
      * @param typeface the typeface to set
      */
     public void withTypeface(final Typeface typeface)
@@ -398,6 +427,16 @@ public class ToolTip
     public int getShadowSize()
     {
         return mShadowSize;
+    }
+
+    public boolean shouldShowAbove()
+    {
+        return mShowAbove;
+    }
+
+    public boolean shouldShowBelow()
+    {
+        return mShowBelow;
     }
 
     /**
