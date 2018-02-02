@@ -225,6 +225,11 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
         mView.getWindowVisibleDisplayFrame(viewDisplayFrame);
 
         final int[] parentViewScreenPosition = new int[2];
+
+        if (getParent() == null) {
+            // You have no parent, why. Ok
+            return;
+        }
         ((View) getParent()).getLocationOnScreen(parentViewScreenPosition);
 
         final int masterViewWidth = mView.getWidth();
