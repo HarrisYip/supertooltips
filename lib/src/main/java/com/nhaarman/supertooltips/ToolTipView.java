@@ -101,7 +101,9 @@ public class ToolTipView extends LinearLayout implements ViewTreeObserver.OnPreD
         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) getLayoutParams();
         layoutParams.width = mWidth;
         setLayoutParams(layoutParams);
-
+        if (getParent() == null) {
+            return false;
+        }
         if (mToolTip != null) {
             applyToolTipPosition(true);
         }
